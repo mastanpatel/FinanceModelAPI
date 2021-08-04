@@ -28,5 +28,7 @@ namespace StockCalculator.Data.Models
         public decimal? PrevClose { get; set; }
         public int? TradesCount { get; set; }
         public decimal? Turnover { get; set; }
+        public decimal? Change { get; set; }
+        public decimal? PctChange { get; set; }
     }
 }

@@ -437,6 +437,8 @@ namespace StockCalculator.Data.Models
 
                 entity.Property(e => e.AveragePrice).HasColumnType("money");
 
+                entity.Property(e => e.Change).HasColumnType("money");
+
                 entity.Property(e => e.CompanyId).HasColumnName("CompanyID");
 
                 entity.Property(e => e.Date).HasColumnType("datetime");
@@ -470,6 +472,8 @@ namespace StockCalculator.Data.Models
                 entity.Property(e => e.OpenPrice).HasColumnType("money");
 
                 entity.Property(e => e.PaidUpValue).HasColumnType("money");
+
+                entity.Property(e => e.PctChange).HasColumnType("money");
 
                 entity.Property(e => e.PrevClose).HasColumnType("money");
 

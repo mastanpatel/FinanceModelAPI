@@ -20,6 +20,7 @@ namespace StockCalculator.Data.Models
         public decimal? PaidUpValue { get; set; }
         public string Sector { get; set; }
         public DateTime? Date { get; set; }
+        public string Series { get; set; }
         public decimal? LastPrice { get; set; }
         public decimal? OpenPrice { get; set; }
         public decimal? AveragePrice { get; set; }

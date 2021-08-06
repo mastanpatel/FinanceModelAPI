@@ -481,6 +481,10 @@ namespace StockCalculator.Data.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
+                entity.Property(e => e.Series)
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.Symbol)
                     .IsRequired()
                     .HasMaxLength(30)

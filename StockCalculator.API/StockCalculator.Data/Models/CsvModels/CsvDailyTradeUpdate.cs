@@ -35,7 +35,7 @@ namespace StockCalculator.Data.Models.CsvModels
         public decimal? ClosePrice { get; set; }
 
         [Name("TOTTRDQTY")]
-        public int? TotalTradedQuantity { get; set; }
+        public long? TotalTradedQuantity { get; set; }
 
         [Name("TOTTRDVAL")]
         public decimal? Turnover { get; set; }

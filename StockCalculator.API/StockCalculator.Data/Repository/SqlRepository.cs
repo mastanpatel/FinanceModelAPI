@@ -4,6 +4,7 @@ using StockCalculator.Data.Models.CsvModels;
 using System;
 using System.Collections.Generic;
 using EFCore.BulkExtensions;
+using System.Linq;
 
 namespace StockCalculator.Data.Repository
 {
@@ -11,7 +12,6 @@ namespace StockCalculator.Data.Repository
     {
         private StockCalculatorContext Context = new StockCalculatorContext();
 
-       
         public string AddCompanyToDb(IEnumerable<CsvCompanies> companies)
         {
             var currentTimeStamp = DateTime.Now.ToString();
@@ -143,6 +143,7 @@ namespace StockCalculator.Data.Repository
 
             return "daily trade added to staging.";
         }
+
         public string UpdateDailytradeToDb(IEnumerable<CsvDailyTradeUpdate> DailyTradeData)
         {
             var currentTimeStamp = DateTime.Now.ToString();
@@ -179,6 +180,13 @@ namespace StockCalculator.Data.Repository
 
 
             return "updated data";
+        }
+
+        public List<VCompaniesDailyStock> GetComapniesDailyStocks(DateTime stockDate)
+        {
+            DateTime Date = Convert.ToDateTime(stockDate);
+            return  Context.VCompaniesDailyStocks.FromSqlRaw("dbo.stp_getDailyStockData @stockDate = {0}", Date).ToList();
+
         }
     }
 }

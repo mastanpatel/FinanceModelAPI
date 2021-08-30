@@ -23,6 +23,7 @@ namespace StockCalculator.Data.Models
         public virtual DbSet<QuarterDetail> QuarterDetails { get; set; }
         public virtual DbSet<StgCompany> StgCompanies { get; set; }
         public virtual DbSet<StgDailyStock> StgDailyStocks { get; set; }
+        public virtual DbSet<VCompaniesDailyStock> VCompaniesDailyStocks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -419,6 +420,70 @@ namespace StockCalculator.Data.Models
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("stgID");
+
+                entity.Property(e => e.Symbol)
+                    .IsRequired()
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Turnover).HasColumnType("money");
+            });
+
+            modelBuilder.Entity<VCompaniesDailyStock>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("vCompaniesDailyStock");
+
+                entity.Property(e => e.AveragePrice).HasColumnType("money");
+
+                entity.Property(e => e.Change).HasColumnType("money");
+
+                entity.Property(e => e.CompanyId).HasColumnName("CompanyID");
+
+                entity.Property(e => e.Date).HasColumnType("datetime");
+
+                entity.Property(e => e.Description).IsUnicode(false);
+
+                entity.Property(e => e.FaceValue).HasColumnType("money");
+
+                entity.Property(e => e.HighPrice).HasColumnType("money");
+
+                entity.Property(e => e.Industry)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Isin)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsUnicode(false)
+                    .HasColumnName("ISIN");
+
+                entity.Property(e => e.LastPrice).HasColumnType("money");
+
+                entity.Property(e => e.ListingDate).HasColumnType("date");
+
+                entity.Property(e => e.LowPrice).HasColumnType("money");
+
+                entity.Property(e => e.Name)
+                    .HasMaxLength(200)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.OpenPrice).HasColumnType("money");
+
+                entity.Property(e => e.PaidUpValue).HasColumnType("money");
+
+                entity.Property(e => e.PctChange).HasColumnType("money");
+
+                entity.Property(e => e.PrevClose).HasColumnType("money");
+
+                entity.Property(e => e.Sector)
+                    .HasMaxLength(30)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Series)
+                    .HasMaxLength(15)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Symbol)
                     .IsRequired()

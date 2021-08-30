@@ -19,7 +19,7 @@ namespace StockCalculator.Data.Models
         public decimal? LastPrice { get; set; }
         public decimal? ClosePrice { get; set; }
         public decimal? AveragePrice { get; set; }
-        public int? TotalTradedQuantity { get; set; }
+        public long? TotalTradedQuantity { get; set; }
         public decimal? Turnover { get; set; }
         public int? TradesCount { get; set; }
         public int? DeliverableQty { get; set; }

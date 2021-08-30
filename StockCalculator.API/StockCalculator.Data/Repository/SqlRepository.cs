@@ -16,8 +16,6 @@ namespace StockCalculator.Data.Repository
         {
             var currentTimeStamp = DateTime.Now.ToString();
 
-           
-
             foreach (CsvCompanies Csvcompany in companies)
             {
                 StgCompany stgcompany = new StgCompany();
@@ -35,7 +33,33 @@ namespace StockCalculator.Data.Repository
 
                 Context.SaveChanges();
 
+            }
 
+
+            return "companies added to staging.";
+        }
+
+        public string AddHighLow52ToDb(IEnumerable<High_Low_52> companies)
+        {
+            var currentTimeStamp = DateTime.Now.ToString();
+            Random random = new Random();
+
+            foreach (High_Low_52 Csvcompany in companies)
+            {
+
+                StgCompany stgcompany = new StgCompany();
+                stgcompany.Isin = random.Next().ToString();
+                stgcompany.StgId = currentTimeStamp;
+                stgcompany.Symbol = Csvcompany.Symbol;
+                stgcompany.Exchange = Csvcompany.Series;
+                stgcompany.Adjusted_52_Week_High = Csvcompany.Adjusted52WeekHigh;
+                stgcompany.Adjusted_52_Week_Low = Csvcompany.Adjusted52WeekLow;
+                stgcompany.Week_52_High_Date = Csvcompany.Week52HighDate;
+                stgcompany.Week_52_Low_Dt = Csvcompany.Week52LowDt;
+               
+                Context.StgCompanies.Add(stgcompany);
+
+                Context.SaveChanges();
 
             }
 

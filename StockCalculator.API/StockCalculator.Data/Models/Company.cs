@@ -30,6 +30,10 @@ namespace StockCalculator.Data.Models
         public string Sector { get; set; }
         public string Industry { get; set; }
         public string Address { get; set; }
+        public decimal? Adjusted52WeekHigh { get; set; }
+        public DateTime? Week52HighDate { get; set; }
+        public decimal? Adjusted52WeekLow { get; set; }
+        public DateTime? Week52LowDt { get; set; }
 
         public virtual ICollection<CompanyQuarterDetail> CompanyQuarterDetails { get; set; }
         public virtual ICollection<DailyStock> DailyStocks { get; set; }

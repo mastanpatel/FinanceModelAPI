@@ -24,5 +24,9 @@ namespace StockCalculator.Data.Models
         public string Sector { get; set; }
         public string Industry { get; set; }
         public string Address { get; set; }
+        public decimal? Adjusted_52_Week_High { get; set; }
+        public DateTime? Week_52_High_Date { get; set; }
+        public decimal? Adjusted_52_Week_Low { get; set; }
+        public DateTime? Week_52_Low_Dt { get; set; }
     }
 }
